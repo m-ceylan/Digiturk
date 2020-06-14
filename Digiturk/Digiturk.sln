@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digiturk.Entity", "Digiturk
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digiturk.Repository", "Digiturk.Repository\Digiturk.Repository.csproj", "{7D1DDC96-7AF7-49F6-8065-3A07A9E63A14}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{B80D508F-2B2B-4FDA-8833-EBC32BC3E925}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digiturk.API", "Digiturk.API\Digiturk.API.csproj", "{BD246605-783C-495B-A8B2-50FE7A7059B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,10 @@ Global
 		{7D1DDC96-7AF7-49F6-8065-3A07A9E63A14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D1DDC96-7AF7-49F6-8065-3A07A9E63A14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D1DDC96-7AF7-49F6-8065-3A07A9E63A14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD246605-783C-495B-A8B2-50FE7A7059B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD246605-783C-495B-A8B2-50FE7A7059B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD246605-783C-495B-A8B2-50FE7A7059B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD246605-783C-495B-A8B2-50FE7A7059B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +45,7 @@ Global
 		{83261B31-FD71-4300-87DA-3127FFAF94C6} = {2FFAC0B8-B008-4642-80B6-0B789581775B}
 		{F9C77A3C-22C5-4A38-B339-A6DB96EE4616} = {2FFAC0B8-B008-4642-80B6-0B789581775B}
 		{7D1DDC96-7AF7-49F6-8065-3A07A9E63A14} = {2FFAC0B8-B008-4642-80B6-0B789581775B}
+		{BD246605-783C-495B-A8B2-50FE7A7059B2} = {B80D508F-2B2B-4FDA-8833-EBC32BC3E925}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E7FAE165-98F2-4861-B921-4C9E5B755531}
