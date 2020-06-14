@@ -40,10 +40,9 @@ namespace Digiturk.API.Controllers
         [HttpPost]
         public async Task<ActionResult<BaseAPIResponse<LoadArticleResponse>>> Load([FromBody] LoadArticleRequest request)
         {
-
             var response = new BaseAPIResponse<LoadArticleResponse>();
             response.Data = new LoadArticleResponse();
-            var query = repo.GetBy(x => x.PublisDate != null);
+            var query = repo.GetBy(x => x.PublisDate != null && x.PublisDate<DateTime.Now);
 
             if (string.IsNullOrWhiteSpace(request.SearchTerm))
                 query = query.Where(x => x.Title.Contains(request.SearchTerm));
@@ -127,7 +126,7 @@ namespace Digiturk.API.Controllers
             if (item == null)
                 return NotFound();
 
-            if (item.OwnerID == CurrentUserID)
+            if (item.OwnerID != CurrentUserID)
                 return Forbid();
 
 
@@ -171,7 +170,7 @@ namespace Digiturk.API.Controllers
         public async Task<ActionResult<BaseAPIResponse<bool>>> Delete([FromBody]UpdateArticleRequest request)
         {
             var response = new BaseAPIResponse<bool>();
-
+            //TODO:request düzeltilecek
 
             var item =await repo.GetByIdAsync(request.Id);
             if (item == null)
