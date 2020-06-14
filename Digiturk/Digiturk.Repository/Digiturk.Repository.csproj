@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Digiturk.Core\Digiturk.Core.csproj" />
+    <ProjectReference Include="..\Digiturk.Entity\Digiturk.Entity.csproj" />
   </ItemGroup>
 
 </Project>
