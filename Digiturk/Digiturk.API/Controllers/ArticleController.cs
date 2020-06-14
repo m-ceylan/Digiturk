@@ -16,6 +16,7 @@ using Digiturk.API.Code;
 using Digiturk.Repository.ProjectUser;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
+using Digiturk.Models.Base.Response;
 
 namespace Digiturk.API.Controllers
 {
@@ -66,11 +67,11 @@ namespace Digiturk.API.Controllers
         }
 
 
-        [Authorize]
+        //[Authorize]
         [HttpPost]
-        public async Task<ActionResult<bool>> Create([FromBody]CreateArticleRequest request)
+        public async Task<ActionResult<BaseAPIResponse<bool>>> Create([FromBody]CreateArticleRequest request)
         {
-            var response = false;
+            var response = new BaseAPIResponse<bool>();
 
             var category = await categoryRepo.GetByIdAsync(request.CategoryID);
             if (category == null)
@@ -111,7 +112,7 @@ namespace Digiturk.API.Controllers
             await categoryRepo.UpdateAsync(category);
 
 
-            response = true;
+            response.Data = true;
             return Ok(response);
         }
         [HttpPost]

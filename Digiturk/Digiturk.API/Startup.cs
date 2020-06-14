@@ -31,7 +31,7 @@ namespace Digiturk.API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            string ConnectionString = Configuration.GetConnectionString("mongoDB");
+            string ConnectionString = this.Configuration.GetConnectionString("mongoDB");
             string dataBase = "digiturkArticle";
 
             services.AddControllers();
@@ -57,6 +57,7 @@ namespace Digiturk.API
 
             app.UseRouting();
 
+            app.UseAuthorization();
             app.UseAuthentication();
             app.UseSwagger();
 

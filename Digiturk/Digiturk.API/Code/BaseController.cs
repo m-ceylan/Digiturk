@@ -9,8 +9,8 @@ namespace Digiturk.API.Code
 
     
     [ApiController]
+    [ValidateModel]
     [Route("[controller]/[action]")]
-    
     public class BaseController<T> : ControllerBase where T : BaseController<T>
     {
         public string CurrentUserID
