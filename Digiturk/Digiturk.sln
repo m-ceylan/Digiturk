@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Substructure", "Substructure", "{2FFAC0B8-B008-4642-80B6-0B789581775B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Digiturk.Core", "Digiturk.Core\Digiturk.Core.csproj", "{83261B31-FD71-4300-87DA-3127FFAF94C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digiturk.Entity", "Digiturk.Entity\Digiturk.Entity.csproj", "{F9C77A3C-22C5-4A38-B339-A6DB96EE4616}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digiturk.Repository", "Digiturk.Repository\Digiturk.Repository.csproj", "{7D1DDC96-7AF7-49F6-8065-3A07A9E63A14}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83261B31-FD71-4300-87DA-3127FFAF94C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83261B31-FD71-4300-87DA-3127FFAF94C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83261B31-FD71-4300-87DA-3127FFAF94C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83261B31-FD71-4300-87DA-3127FFAF94C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9C77A3C-22C5-4A38-B339-A6DB96EE4616}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9C77A3C-22C5-4A38-B339-A6DB96EE4616}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9C77A3C-22C5-4A38-B339-A6DB96EE4616}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9C77A3C-22C5-4A38-B339-A6DB96EE4616}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D1DDC96-7AF7-49F6-8065-3A07A9E63A14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D1DDC96-7AF7-49F6-8065-3A07A9E63A14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D1DDC96-7AF7-49F6-8065-3A07A9E63A14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D1DDC96-7AF7-49F6-8065-3A07A9E63A14}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{83261B31-FD71-4300-87DA-3127FFAF94C6} = {2FFAC0B8-B008-4642-80B6-0B789581775B}
+		{F9C77A3C-22C5-4A38-B339-A6DB96EE4616} = {2FFAC0B8-B008-4642-80B6-0B789581775B}
+		{7D1DDC96-7AF7-49F6-8065-3A07A9E63A14} = {2FFAC0B8-B008-4642-80B6-0B789581775B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7FAE165-98F2-4861-B921-4C9E5B755531}
+	EndGlobalSection
+EndGlobal
