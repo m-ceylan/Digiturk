@@ -111,6 +111,7 @@ namespace Digiturk.API.Controllers
             await repo.AddAsync(item);
             await categoryRepo.UpdateAsync(category);
 
+            response.Message = "Kayıt başarıyla eklendi.";
 
             response.Data = true;
             return Ok(response);
@@ -160,7 +161,7 @@ namespace Digiturk.API.Controllers
             await repo.UpdateAsync(item);
 
 
-
+            response.Message = "Kayıt başarıyla güncellendi.";
             response.Data = true;
             return Ok(response);
 
@@ -187,7 +188,7 @@ namespace Digiturk.API.Controllers
 
             await categoryRepo.UpdateAsync(category);
 
-
+            response.Message = "Kayıt başarıyla silindi.";
             response.Data = true;
             return Ok(response);
         }

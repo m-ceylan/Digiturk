@@ -14,7 +14,6 @@ namespace Digiturk.Models.API.Request.Article
         public string Detail { get; set; }
         public string Image { get; set; }
         public DateTime? PublisDate { get; set; }
-
         [CustomRequired]
         [CustomRequiredID]
         public string CategoryID { get; set; }

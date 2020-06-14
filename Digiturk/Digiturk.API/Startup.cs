@@ -83,7 +83,8 @@ namespace Digiturk.API
 
                 });
             }
-            if (!await categoryRepo.AnyAsync(x=>x.Title=="Eðitim" || x.Title=="Yazýlým" || x.Title=="Saðlýk"))
+            
+            if (!await categoryRepo.AnyAsync(x=>x.Title=="Eðitim"))
             {
 
                 var educationItem = new Entity.Definition.Category {
@@ -91,13 +92,13 @@ namespace Digiturk.API
                   Slug="egitim",
                    OrderNo=1
                 };
-
                 var softwareItem = new Entity.Definition.Category
                 {
                     Title = "Yazýlým",
                     Slug = "yazilim",
                     OrderNo = 2
                 };
+
                 var healthItem = new Entity.Definition.Category
                 {
                     Title = "Saðlýk",
