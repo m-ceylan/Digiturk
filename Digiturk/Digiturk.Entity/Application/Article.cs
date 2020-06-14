@@ -16,7 +16,7 @@ namespace Digiturk.Entity.Application
         public string CategoryID { get; set; }
         public string OwnerID { get; set; }
         public Digiturk.Entity.Definition.Category Category { get; set; } = new Definition.Category();
-        public Digiturk.Entity.ProjectUser.User Owner { get; set; } = new ProjectUser.User();
+        public Digiturk.Entity.ProjectUser.UserMini Owner { get; set; } = new ProjectUser.UserMini();
 
     }
 }

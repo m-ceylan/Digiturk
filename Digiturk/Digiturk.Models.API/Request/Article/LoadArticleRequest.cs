@@ -13,5 +13,7 @@ namespace Digiturk.Models.API.Request.Article
         public int Take { get; set; }
 
 
+        public string SearchTerm { get; set; }
+
     }
 }

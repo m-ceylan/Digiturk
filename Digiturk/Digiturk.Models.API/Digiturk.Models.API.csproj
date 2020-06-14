@@ -5,10 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Response\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\Digiturk.Entity\Digiturk.Entity.csproj" />
     <ProjectReference Include="..\Digiturk.Models.Base\Digiturk.Models.Base.csproj" />
   </ItemGroup>
 
