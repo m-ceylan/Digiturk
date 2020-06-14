@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Digiturk.API.Code;
 using Digiturk.Entity.Application;
 using Digiturk.Repository.Application;
 using Digiturk.Repository.Definition;
@@ -30,14 +31,18 @@ namespace Digiturk.API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            string connectionString = Configuration.GetConnectionString("mongoDB");
+            string ConnectionString = Configuration.GetConnectionString("mongoDB");
             string dataBase = "digiturkArticle";
 
-            services.AddSingleton(x=>new ArticleRepository(connectionString,dataBase,"article"));
-            services.AddSingleton(x=>new UserRepository(connectionString,dataBase,"user"));
-            services.AddSingleton(x=>new CategoryRepository(connectionString,dataBase,"category"));
-
             services.AddControllers();
+            services.Configure<ApiBehaviorOptions>(opts => opts.SuppressModelStateInvalidFilter = true);
+            services.ConfigureRepositories(ConnectionString,dataBase);
+            services.ConfigureJWTAuthentication();
+            services.ConfigureSwagger();
+            services.ConfigureCors();
+         
+
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,12 +57,19 @@ namespace Digiturk.API
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseSwagger();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1.0/swagger.json", "API Version (V 1.0)");
+            });
+
         }
     }
 }

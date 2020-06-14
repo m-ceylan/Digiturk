@@ -13,7 +13,7 @@ namespace Digiturk.API.Controllers
     public class HomeController : ControllerBase
     {
 
-
+        [HttpGet]
         public ActionResult Index()
         {
 

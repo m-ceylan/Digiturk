@@ -36,8 +36,7 @@ namespace Digiturk.API.Controllers
             this.categoryRepo = categoryRepo;
             this.userRepo = userRepo;
         }
-
-
+        [HttpPost]
         public async Task<ActionResult<LoadArticleResponse>> Load([FromBody] LoadArticleRequest request)
         {
 
@@ -53,7 +52,7 @@ namespace Digiturk.API.Controllers
 
             return Ok(response);
         }
-
+        [HttpPost]
 
         public async Task<ActionResult<GetArticleResponse>> Get([FromBody] GetArticleRequest request)
         {
@@ -68,6 +67,7 @@ namespace Digiturk.API.Controllers
 
 
         [Authorize]
+        [HttpPost]
         public async Task<ActionResult<bool>> Create([FromBody]CreateArticleRequest request)
         {
             var response = false;
@@ -114,6 +114,7 @@ namespace Digiturk.API.Controllers
             response = true;
             return Ok(response);
         }
+        [HttpPost]
         public async Task<ActionResult<bool>> Update([FromBody]UpdateArticleRequest request)
         {
             var response = false;
@@ -163,7 +164,7 @@ namespace Digiturk.API.Controllers
 
         }
 
-
+        [HttpPost]
         public async Task<ActionResult<bool>> Delete([FromBody]UpdateArticleRequest request)
         {
             var response = false;
@@ -188,7 +189,9 @@ namespace Digiturk.API.Controllers
             response = true;
             return Ok(response);
         }
-        public  string ToUrlSlug(string text)
+      
+        
+        private  string ToUrlSlug(string text)
         {
             return Regex.Replace(Regex.Replace(Regex.Replace(text.Trim().ToLower().Replace(" ", "-").Replace("ö", "o").Replace(".", "").Replace("ç", "c").Replace("ş", "s").Replace("ı", "i").Replace("ğ", "g").Replace("ü", "u"), @"\s+", " "), @"\s", ""), @"[^a-z0-9\s-]", "");
         }
