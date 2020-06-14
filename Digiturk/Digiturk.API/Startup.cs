@@ -38,38 +38,84 @@ namespace Digiturk.API
             services.Configure<ApiBehaviorOptions>(opts => opts.SuppressModelStateInvalidFilter = true);
             services.ConfigureRepositories(ConnectionString,dataBase);
             services.ConfigureJWTAuthentication();
+          
             services.ConfigureSwagger();
             services.ConfigureCors();
-         
 
-            services.AddMvc();
+
+            services.AddMvc(option =>
+            {
+                option.EnableEndpointRouting = false;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public async void Configure(IApplicationBuilder app, IWebHostEnvironment env,UserRepository userRepo,CategoryRepository categoryRepo)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-            app.UseAuthentication();
-            app.UseSwagger();
-
-            app.UseEndpoints(endpoints =>
+            else
             {
-                endpoints.MapControllers();
-            });
-
+                app.UseHttpsRedirection();
+            }
+            app.UseRouting();
+            app.UseAuthentication();
+            app.UseCors("CorsPolicy");
+            app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1.0/swagger.json", "API Version (V 1.0)");
             });
+
+            app.UseMvc();
+            #region Default Data
+
+            if (!await userRepo.AnyAsync(x => x.Email == "m.mustafaceylan19@gmail.com"))
+            {
+                await userRepo.AddAsync(new Entity.ProjectUser.User
+                {
+                    FirstName = "Mustafa",
+                    LastName = "Ceylan",
+                    Email = "m.mustafaceylan19@gmail.com",
+                    Password = "123456"
+
+                });
+            }
+            if (!await categoryRepo.AnyAsync(x=>x.Title=="Eðitim" || x.Title=="Yazýlým" || x.Title=="Saðlýk"))
+            {
+
+                var educationItem = new Entity.Definition.Category {
+                 Title="Eðitim",
+                  Slug="egitim",
+                   OrderNo=1
+                };
+
+                var softwareItem = new Entity.Definition.Category
+                {
+                    Title = "Yazýlým",
+                    Slug = "yazilim",
+                    OrderNo = 2
+                };
+                var healthItem = new Entity.Definition.Category
+                {
+                    Title = "Saðlýk",
+                    Slug = "saglik",
+                    OrderNo = 3
+                };
+
+                await categoryRepo.AddAsync(new List<Entity.Definition.Category> { educationItem,softwareItem,healthItem });
+
+            }
+
+
+
+
+
+
+            #endregion
+
 
         }
     }

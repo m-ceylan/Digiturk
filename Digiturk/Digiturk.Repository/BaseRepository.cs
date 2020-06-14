@@ -24,8 +24,7 @@ namespace Digiturk.Repository
             var db = client.GetDatabase(database);
             mongoCollection = db.GetCollection<T>(collection);
         }
-
-        public MongoClient Client() => client;
+       
         public IMongoCollection<T> Collection() => mongoCollection;
         public IMongoQueryable<T> GetAll()
         {
@@ -38,10 +37,6 @@ namespace Digiturk.Repository
         public async Task<bool> AnyAsync(System.Linq.Expressions.Expression<Func<T, bool>> expression)
         {
             return await GetAll().Where(expression).Where(x => x.RegistrationStatus != RegistrationStatus.Deleted).AnyAsync();
-        }
-        public async Task<int> CountAsync(System.Linq.Expressions.Expression<Func<T, bool>> expression)
-        {
-            return await GetAll().Where(expression).Where(x => x.RegistrationStatus != RegistrationStatus.Deleted).CountAsync();
         }
         public async Task<T> GetByIdAsync(string Id)
         {
@@ -63,7 +58,17 @@ namespace Digiturk.Repository
             await mongoCollection.InsertOneAsync(entity);
             return entity;
         }
-    
+        public virtual async Task<List<T>> AddAsync(List<T> entities)
+        {
+            entities.ForEach(x =>
+            {
+                x.CreateDate = DateTime.UtcNow;
+                x.UpdateDate = DateTime.UtcNow;
+                x.RegistrationStatus = Core.Enums.Enums.RegistrationStatus.Active;
+            });
+            await mongoCollection.InsertManyAsync(entities);
+            return entities;
+        }
         public virtual async Task UpdateAsync(T entity, bool forceDates = false)
         {
             if (!forceDates)

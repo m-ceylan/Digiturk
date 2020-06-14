@@ -26,8 +26,8 @@ namespace Digiturk.API.Code
                       ValidateAudience = true,
                       ValidateLifetime = true,
                       ValidateIssuerSigningKey = true,
-                      ValidIssuer = "https://www.isbul.net",
-                      ValidAudience = "https://www.isbul.net",
+                      ValidIssuer = "https://www.digiturk.com.tr",
+                      ValidAudience = "https://www.digiturk.com.tr",
                       IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("digiturk2020!!1!1!!1trm"))
                   };
               }
@@ -51,9 +51,9 @@ namespace Digiturk.API.Code
                 options.AddPolicy("CorsPolicy",
                     builder => builder.AllowAnyOrigin()
                     .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials());
+                    .AllowAnyHeader());
             });
+
         }
 
         public static void ConfigureSwagger(this IServiceCollection services)

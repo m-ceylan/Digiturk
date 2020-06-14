@@ -38,36 +38,36 @@ namespace Digiturk.API.Controllers
             this.userRepo = userRepo;
         }
         [HttpPost]
-        public async Task<ActionResult<LoadArticleResponse>> Load([FromBody] LoadArticleRequest request)
+        public async Task<ActionResult<BaseAPIResponse<LoadArticleResponse>>> Load([FromBody] LoadArticleRequest request)
         {
 
-            var response = new LoadArticleResponse();
-
+            var response = new BaseAPIResponse<LoadArticleResponse>();
+            response.Data = new LoadArticleResponse();
             var query = repo.GetBy(x => x.PublisDate != null);
 
             if (string.IsNullOrWhiteSpace(request.SearchTerm))
                 query = query.Where(x => x.Title.Contains(request.SearchTerm));
 
-            response.Items = await query.OrderByDescending(x => x.PublisDate).Skip(request.Skip).Take(request.Take).ToListAsync();
+            response.Data.Items = await query.OrderByDescending(x => x.PublisDate).Skip(request.Skip).Take(request.Take).ToListAsync();
 
 
             return Ok(response);
         }
         [HttpPost]
 
-        public async Task<ActionResult<GetArticleResponse>> Get([FromBody] GetArticleRequest request)
+        public async Task<ActionResult<BaseAPIResponse<GetArticleResponse>>> Get([FromBody] GetArticleRequest request)
         {
-            var response = new GetArticleResponse();
-
-            response.Item = await repo.GetByIdAsync(request.Id);
-            if (response.Item == null)
+            var response = new BaseAPIResponse<GetArticleResponse>();
+            response.Data = new GetArticleResponse();
+            response.Data.Item = await repo.GetByIdAsync(request.Id);
+            if (response.Data.Item == null)
                 return NotFound();
 
             return Ok(response);
         }
 
 
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<BaseAPIResponse<bool>>> Create([FromBody]CreateArticleRequest request)
         {
@@ -115,10 +115,11 @@ namespace Digiturk.API.Controllers
             response.Data = true;
             return Ok(response);
         }
+        [Authorize]
         [HttpPost]
-        public async Task<ActionResult<bool>> Update([FromBody]UpdateArticleRequest request)
+        public async Task<ActionResult<BaseAPIResponse<bool>>> Update([FromBody]UpdateArticleRequest request)
         {
-            var response = false;
+            var response = new BaseAPIResponse<bool>();
 
             var item = await repo.GetByIdAsync(request.Id);
 
@@ -160,15 +161,15 @@ namespace Digiturk.API.Controllers
 
 
 
-            response = true;
+            response.Data = true;
             return Ok(response);
 
         }
-
+        [Authorize]
         [HttpPost]
-        public async Task<ActionResult<bool>> Delete([FromBody]UpdateArticleRequest request)
+        public async Task<ActionResult<BaseAPIResponse<bool>>> Delete([FromBody]UpdateArticleRequest request)
         {
-            var response = false;
+            var response = new BaseAPIResponse<bool>();
 
 
             var item =await repo.GetByIdAsync(request.Id);
@@ -187,7 +188,7 @@ namespace Digiturk.API.Controllers
             await categoryRepo.UpdateAsync(category);
 
 
-            response = true;
+            response.Data = true;
             return Ok(response);
         }
       
