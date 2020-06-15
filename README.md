@@ -23,6 +23,7 @@ Daha fazla vaktim olsaydı, üyelik sistemi, yorum, favori, beğeni sistemi, Bla
 NOT:
 
 Program ilk çalıştırıldığın da kendi içerisinde varsayılan veriler oluşturacaktır. Bu sayede Veritabanı kurulumu otomatik olacaktır.
+Makale Load end point inde skip ve take, sayfalama işlemleri için yazılmıtır.
 Makale oluşturma, güncellenme ve silme işlemlerinde kullanıcının oturum açması istenilecektir.
 Kullanıcı bilgileri : 
 Email : m.mustafaceylan19@gmail.com
