@@ -17,6 +17,7 @@ Daha geniş bir vaktiniz olsaydı projeye neler eklemek isterdiniz?
 
 Açıkcası bu proje için iki gün çok yeterli bir süreydi. Fakat şuan bir proje üzerinde çalıştığımız içiin yoğun bir süreçten geçiyoruz.
 Daha fazla vaktim olsaydı, üyelik sistemi, yorum, favori, beğeni sistemi, Blazor ile geliştirilen bir admin paneli yapmayı isterdim.
+İnterface kullanarak bağmlılıkları dahada azaltır, BLL katmanı ile katmanlı mimarimi bir adım daha yukarı taşımayı isterdim.
 
 
 NOT:
